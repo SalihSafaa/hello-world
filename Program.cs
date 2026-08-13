@@ -18,6 +18,8 @@
             product.Name = "Laptop";
             product.Price = 1000.00m;
 
+            CatalogService catalogService = new CatalogService();
+            catalogService.AddCategory(category);
 
             Console.WriteLine($"Category: {category.Name}, Description: {category.Description}");
             Console.WriteLine($"Product: {product.Name}, Price: {product.Price}");
