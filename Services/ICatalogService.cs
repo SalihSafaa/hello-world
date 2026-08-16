@@ -6,16 +6,17 @@ namespace HelloWorld
         IEnumerable<Product> GetProducts();
         IEnumerable<Product> GetProductsByCategoryId(int categoryId);
 
-        Category GetCategoryById(int id);
-        Product GetProductById(int id);
+        Category? GetCategoryById(int id);
+        Product? GetProductById(int id);
 
-        void AddCategory(Category category);
-        void AddProduct(Product product);
+        void AddCategory(string name, string description);
+        void AddProduct(string name, decimal price, int categoryId);
 
-        void UpdateCategory(Category category);
-        void UpdateProduct(Product product);
+        void UpdateCategory(int id, string newName, string newDescription);
+        void UpdateProduct(int id, string newName, decimal newPrice, int newCategoryId);
 
         void DeleteCategory(int id);
         void DeleteProduct(int id);
+
     }
 }
