@@ -21,6 +21,7 @@
                 Console.WriteLine("9. Update Product");
                 Console.WriteLine("10. Delete Category");
                 Console.WriteLine("11. Delete Product");
+                Console.WriteLine("12. Search Products by Name");
                 Console.WriteLine("0. Exit");
                 choice = int.TryParse(Console.ReadLine(), out choice) ? choice : -1;
 
@@ -94,14 +95,14 @@
                         Console.WriteLine("Enter Product Price:");
                         decimal productPrice=Convert.ToDecimal(Console.ReadLine());
                         Console.WriteLine("Enter Product Category Id:");
-                        int productCategoryId = int.Parse(Console.ReadLine());
+                        int.TryParse(Console.ReadLine(), out int productCategoryId);
 
                         catalogService.AddProduct(productName, productPrice, productCategoryId);
                         break;
                     case 8:
                         // Update Category
                         Console.WriteLine("Enter Category Id to update:");
-                        int categoryIdToUpdate=int.Parse(Console.ReadLine());
+                        int.TryParse(Console.ReadLine(), out int categoryIdToUpdate);
                         Console.WriteLine("Enter new Category Name:");
                         string newCategoryName = Console.ReadLine();
                         Console.WriteLine("Enter new Category Description:");
@@ -112,26 +113,33 @@
                     case 9:
                         // Update Product
                         Console.WriteLine("Enter Product Id to update:");
-                        int productIdToUpdate=int.Parse(Console.ReadLine());
+                        int.TryParse(Console.ReadLine(), out int productIdToUpdate);
                         Console.WriteLine("Enter new Product Name:");
                         string newProductName = Console.ReadLine();
                         Console.WriteLine("Enter new Product Price:");
                         decimal newProductPrice=Convert.ToDecimal(Console.ReadLine());
                         Console.WriteLine("Enter new Product Category Id:");
-                        int newProductCategoryId = int.Parse(Console.ReadLine());
+                        int.TryParse(Console.ReadLine(), out int newProductCategoryId);
                         catalogService.UpdateProduct(productIdToUpdate, newProductName, newProductPrice, newProductCategoryId);
                         break;
                     case 10:
                         // Delete Category
                         Console.WriteLine("Enter Category Id to delete:");
-                        int categoryIdToDelete=int.Parse(Console.ReadLine());
+                        int.TryParse(Console.ReadLine(), out int categoryIdToDelete);
                         catalogService.DeleteCategory(categoryIdToDelete);
                         break;
                     case 11:
                         // Delete Product
                         Console.WriteLine("Enter Product Id to delete:");
-                        int productIdToDelete=int.Parse(Console.ReadLine());
+                        int.TryParse(Console.ReadLine(), out int productIdToDelete);
                         catalogService.DeleteProduct(productIdToDelete);
+                        break;
+                    case 12:
+                        // Search Products by Name
+                        Console.WriteLine("Enter Product Name to search:");
+                        string productNameToSearch = Console.ReadLine();
+                        var productsByName = catalogService.SearchProductsByName(productNameToSearch);
+                        productsByName.ToList().ForEach(product => Console.WriteLine(product));
                         break;
                     case 0:
                         Console.WriteLine("Exiting...");

@@ -30,42 +30,74 @@ namespace HelloWorld
 
         public IEnumerable<Product> GetProductsByCategoryId(int categoryId)
         {
-            var productsOfCategory=new List<Product>();
-            foreach(var product in products)
+            if(!products.Any(p=>p.CategoryId==categoryId))
             {
-                if(product.CategoryId==categoryId)
-                {
-                    productsOfCategory.Add(product);
-                }
+                Console.WriteLine("No products found for the given category ID.");
+                return Enumerable.Empty<Product>();
             }
-            return productsOfCategory;
+            var ProductByCategory=products.Where(p=>p.CategoryId==categoryId).OrderBy(p=>p.Name);
+            return ProductByCategory;
+
+            // var productsOfCategory=new List<Product>();
+            // foreach(var product in products)
+            // {
+            //     if(product.CategoryId==categoryId)
+            //     {
+            //         productsOfCategory.Add(product);
+            //     }
+            // }
+            // return productsOfCategory;
             //throw new NotImplementedException();
         }
 
+        public IEnumerable<Product> SearchProductsByName(string productName)
+        {
+            if(!products.Any(p=>p.Name.Contains(productName, StringComparison.OrdinalIgnoreCase)))
+            {
+                Console.WriteLine("No Products found for the given product name.");
+                return Enumerable.Empty<Product>();
+            }
+            var productsByName=products.Where(p=>p.Name.Contains(productName,StringComparison.OrdinalIgnoreCase)).OrderBy(p=>p.Name);
+            return productsByName;
+        }
         public Category? GetCategoryById(int id)
         {
-            foreach(var category in categories)
+            if(!categories.Any(c=>c.Id==id))
             {
-                if(category.Id==id)
-                {
-                    return category;
-                }
+                Console.WriteLine("Category not found");
+                return null;
             }
-            Console.WriteLine("Category not found");
-            return null;
+            var category=categories.Find(c=>c.Id==id);
+            return category;
+            // foreach(var category in categories)
+            // {
+            //     if(category.Id==id)
+            //     {
+            //         return category;
+            //     }
+            // }
+            // Console.WriteLine("Category not found");
+            // return null;
         }
 
         public Product? GetProductById(int id)
         {
-            foreach(var product in products)
+            if(!products.Any(p=>p.Id==id))
             {
-                if(product.Id==id)
-                {
-                    return product;
-                }
+                Console.WriteLine("Product not found");
+                return null;
             }
-            Console.WriteLine("Product not found");
-            return null;
+            var product=products.Find(p=>p.Id==id);
+            return product;
+            // foreach(var product in products)
+            // {
+            //     if(product.Id==id)
+            //     {
+            //         return product;
+            //     }
+            // }
+            // Console.WriteLine("Product not found");
+            // return null;
             //throw new NotImplementedException();
         }
 
@@ -161,10 +193,10 @@ namespace HelloWorld
             else
             {
                 Console.WriteLine($"Are you sure you want to delete this category {categories.Find(c=>c.Id==id).Name} ? (y/n)");
-
+                string confirmation=string.Empty;
                 do
                 {
-                    var confirmation = Console.ReadLine();
+                    confirmation = Console.ReadLine();
                     if (confirmation == "y")
                     {
                         var categoryToDelete=categories.Find(c=>c.Id==id);
@@ -180,7 +212,7 @@ namespace HelloWorld
                     {
                         Console.WriteLine("Invalid input. Please enter 'y' or 'n'.");
                     }
-                } while (true); 
+                } while (confirmation != "y" && confirmation != "n"); 
             }
             //Console.WriteLine("not implemented yet");
         }
@@ -195,9 +227,10 @@ namespace HelloWorld
             else
             {
                 Console.WriteLine($"Are you sure you want to delete this product {products.Find(p => p.Id == id).Name}? (y/n)");
+                string confirmation=string.Empty;
                 do
                 {
-                    var confirmation = Console.ReadLine();
+                    confirmation = Console.ReadLine();
                     if (confirmation == "y")
                     {
                         var productToDelete = products.Find(p => p.Id == id);
@@ -213,7 +246,7 @@ namespace HelloWorld
                     {
                         Console.WriteLine("Invalid input. Please enter 'y' or 'n'.");
                     }
-                } while (true);
+                } while (confirmation != "y" && confirmation != "n");
 
             }
             //Console.WriteLine("not implemented yet");

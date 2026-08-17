@@ -6,8 +6,12 @@ namespace HelloWorld
         IEnumerable<Product> GetProducts();
         IEnumerable<Product> GetProductsByCategoryId(int categoryId);
 
+        IEnumerable<Product> SearchProductsByName(string productName);
+
+
         Category? GetCategoryById(int id);
         Product? GetProductById(int id);
+
 
         void AddCategory(string name, string description);
         void AddProduct(string name, decimal price, int categoryId);
