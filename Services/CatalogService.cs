@@ -2,11 +2,7 @@ namespace HelloWorld
 {
     public class CatalogService : ICatalogService
     {
-        public bool validatingName(string name)
-        {
-            return !string.IsNullOrWhiteSpace(name);
-        }
-        ///mock data to be removed later
+        //test
             private static List<Category> categories = new List<Category>
             {
                 new Category(1, "Electronics", "Devices and gadgets"),
