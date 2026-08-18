@@ -8,19 +8,25 @@ namespace HelloWorld
 
         IEnumerable<Product> SearchProductsByName(string productName);
 
+        public bool CheckProductIdExist(string checkId, out Product product);
+
+        public bool CheckCategoryIdExist(string checkId, out Category category);
+
 
         Category? GetCategoryById(int id);
         Product? GetProductById(int id);
 
 
         void AddCategory(string name, string description);
-        void AddProduct(string name, decimal price, int categoryId);
+        void AddProduct(string name, decimal price,int quantity, int categoryId);
 
         void UpdateCategory(int id, string newName, string newDescription);
-        void UpdateProduct(int id, string newName, decimal newPrice, int newCategoryId);
+        void UpdateProduct(int id, string newName, decimal newPrice,int quantity, int newCategoryId);
 
         void DeleteCategory(int id);
         void DeleteProduct(int id);
+
+        void Report();
 
     }
 }
