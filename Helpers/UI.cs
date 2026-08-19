@@ -29,7 +29,7 @@ namespace HelloWorld
                 Console.WriteLine("1. Add Category");
                 Console.WriteLine("2. Add Product");
                 Console.WriteLine("3. List Products");
-                Console.WriteLine("4. List By Categories");
+                Console.WriteLine("4. List By a Categorie");
                 Console.WriteLine("5. Search Products by Name");
                 Console.WriteLine("6. Update Product");
                 Console.WriteLine("7. Delete Product");
@@ -96,7 +96,7 @@ namespace HelloWorld
                         .ForEach(p=>Console.WriteLine
                         ($"{p.Name} {p.Price:c} ,inStock: {p.Quantity} {catalogService.
                         GetCategoryById
-                        (p.CategoryId)?.Name}"));
+                        (p.CategoryId)?.Name}, {p.CreatedAt}"));
                         break;
                     case 4:
                         //list by category
