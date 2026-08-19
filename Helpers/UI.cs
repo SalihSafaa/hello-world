@@ -1,5 +1,3 @@
-using System.Net.Sockets;
-
 namespace HelloWorld
 {
     public static class UI
@@ -65,27 +63,31 @@ namespace HelloWorld
                         string quantityInput;
                         int productQuantity;
                         catalogService.GetCategories().ToList().ForEach(c=>Console.WriteLine($"{c.Id} {c.Name}"));
-                        Console.WriteLine("Enter the category id for this product");
+                        
                         do  
                         {
+                            Console.WriteLine("Enter the category id for this product");
                             productCategoryId=Console.ReadLine();
 
                         }while(!UserInputValidations.ValidateAndCovertToInt(productCategoryId,out intproductCategotyId) || !catalogService.CheckCategoryIdExist(productCategoryId,out _));
-                        Console.WriteLine("Enter Product name.");
+                        
                         do
                         {
+                            Console.WriteLine("Enter Product name.");
                             productName=Console.ReadLine();
                         }while(!UserInputValidations.ValidateString(ref productName));
-                        Console.WriteLine("Enter product Price");
+                        
                         do
                         {
+                            Console.WriteLine("Enter product Price");
                             productPrice=Console.ReadLine();
                         }while(!UserInputValidations.ValidatePrice(productPrice, out price));
-                        Console.WriteLine("Enter the quantity of this Product");
+                        
                         do
                         {
+                            Console.WriteLine("Enter the quantity of this Product");
                             quantityInput=Console.ReadLine();
-                        }while(!UserInputValidations.ValidateAndCovertToInt(quantityInput,out productQuantity));
+                        }while(!UserInputValidations.ValidateAndCovertToInt(quantityInput,out productQuantity)||productQuantity<0);
                         catalogService.AddProduct(productName,price,productQuantity,intproductCategotyId);
                         break;
                     case 3:

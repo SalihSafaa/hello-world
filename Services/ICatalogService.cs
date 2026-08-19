@@ -17,10 +17,10 @@ namespace HelloWorld
         Product? GetProductById(int id);
 
 
-        void AddCategory(string name, string description);
+        void AddCategory(string name, string description="general");
         void AddProduct(string name, decimal price,int quantity, int categoryId);
 
-        void UpdateCategory(int id, string newName, string newDescription);
+        void UpdateCategory(int id, string newName, string newDescription="general");
         void UpdateProduct(int id, string newName, decimal newPrice,int quantity, int newCategoryId);
 
         void DeleteCategory(int id);
