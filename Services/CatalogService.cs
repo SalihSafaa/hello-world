@@ -362,17 +362,24 @@ namespace HelloWorld
             decimal totalProductsPrice=_products.Values.Sum(p=>p.Price*p.Quantity);
             Product expensive=_products.Values.MaxBy(p=>p.Price);
             List<Product> outOfStock=_products.Values.Where(p=>p.Quantity<1).ToList();
-            Console.WriteLine($"The total price of the catalog is: {totalProductsPrice}");
-            Console.WriteLine($"The mmost expensive product in the catalog is: {expensive}");
+
+            Console.WriteLine($"The total price of the catalog is: {totalProductsPrice,-9}");
+            Console.WriteLine(new string('-',80));
+
+            Console.WriteLine($"The mmost expensive product in the catalog is: {expensive.Name,-12}: {expensive.Price,-9:C}");
+            Console.WriteLine(new string('-',80));
+
             Console.WriteLine("\nProducts out of stock:");
-            outOfStock.ForEach(p=>Console.Write($"{p.Name},"));
-            Console.WriteLine("\n");
+            outOfStock.ForEach(p=>Console.Write($"{p.Name}, "));
+            Console.WriteLine();
+            Console.WriteLine(new string('-',80));
 
             var GroupedProducts= _products.Values.GroupBy(p=>p.CategoryId);
             foreach(var group in GroupedProducts)
             {
                 var categoryName = GetCategoryById(group.Key)?.Name ?? "Unknown";
-                Console.WriteLine($"{categoryName}'s average price: {group.Average(p=>p.Price)}, product count: {group.Count()}");
+                Console.WriteLine($"{categoryName+("\'s"),-12} average price: {group.Average(p=>p.Price),-5:C} | product count: {group.Count(),-5}");
+                Console.WriteLine(new string('-',80));
             }
             //average price per cat , count per cat
            // _products.GroupBy(p=>p.CategoryId)

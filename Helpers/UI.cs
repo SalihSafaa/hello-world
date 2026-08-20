@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace HelloWorld
 {
     public static class UI
@@ -65,7 +63,6 @@ namespace HelloWorld
                         string quantityInput;
                         int productQuantity;
                         catalogService.GetCategories().ToList().ForEach(c=>Console.WriteLine($"{c.Id} {c.Name}"));
-                        
                         do  
                         {
                             Console.WriteLine("Enter the category id for this product");
@@ -174,10 +171,6 @@ namespace HelloWorld
                         //Report
                         catalogService.Report();
                         break;
-
-
-
-
                 }
 /*
                 switch (choice)

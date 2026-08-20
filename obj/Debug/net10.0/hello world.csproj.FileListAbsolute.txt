@@ -27,3 +27,4 @@ C:\Users\salih.safaa\intern\helloworld\hello-world\obj\Debug\net10.0\refint\hell
 C:\Users\salih.safaa\intern\helloworld\hello-world\obj\Debug\net10.0\hello world.pdb
 C:\Users\salih.safaa\intern\helloworld\hello-world\obj\Debug\net10.0\hello world.genruntimeconfig.cache
 C:\Users\salih.safaa\intern\helloworld\hello-world\obj\Debug\net10.0\ref\hello world.dll
+C:\Users\salih.safaa\intern\helloworld\hello-world\bin\Debug\net10.0\hello world.exe
