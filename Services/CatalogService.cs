@@ -380,6 +380,7 @@ namespace HelloWorld
                 var categoryName = GetCategoryById(group.Key)?.Name ?? "Unknown";
                 Console.WriteLine($"{categoryName+("\'s"),-12} average price: {group.Average(p=>p.Price),-5:C} | product count: {group.Count(),-5}");
                 Console.WriteLine(new string('-',80));
+                
             }
             //average price per cat , count per cat
            // _products.GroupBy(p=>p.CategoryId)

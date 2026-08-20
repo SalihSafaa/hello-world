@@ -34,6 +34,7 @@ namespace HelloWorld
                 Console.WriteLine("6. Update Product");
                 Console.WriteLine("7. Delete Product");
                 Console.WriteLine("8. Reports");
+                Console.WriteLine("0. Exit");
 
 
                 choice = int.TryParse(Console.ReadLine(), out choice) ? choice : -1;
@@ -171,6 +172,7 @@ namespace HelloWorld
                         //Report
                         catalogService.Report();
                         break;
+
                 }
 /*
                 switch (choice)
