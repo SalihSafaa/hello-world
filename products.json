@@ -1,0 +1,50 @@
+{
+  "1": {
+    "Id": 1,
+    "CreatedAt": "2026-08-20T11:45:31.5199989+03:00",
+    "Name": "Laptop",
+    "Price": 999.99,
+    "CategoryId": 1,
+    "Quantity": 0
+  },
+  "2": {
+    "Id": 2,
+    "CreatedAt": "2026-08-20T11:45:31.5299302+03:00",
+    "Name": "Smartphone",
+    "Price": 499.99,
+    "CategoryId": 1,
+    "Quantity": 1
+  },
+  "3": {
+    "Id": 3,
+    "CreatedAt": "2026-08-20T11:45:31.5299355+03:00",
+    "Name": "Novel",
+    "Price": 19.99,
+    "CategoryId": 2,
+    "Quantity": 6
+  },
+  "4": {
+    "Id": 4,
+    "CreatedAt": "2026-08-20T11:45:31.5299379+03:00",
+    "Name": "T-Shirt",
+    "Price": 14.99,
+    "CategoryId": 3,
+    "Quantity": 9
+  },
+  "5": {
+    "Id": 5,
+    "CreatedAt": "2026-08-20T11:45:31.5299426+03:00",
+    "Name": "test",
+    "Price": 6.7,
+    "CategoryId": 4,
+    "Quantity": 8008
+  },
+  "6": {
+    "Id": 6,
+    "CreatedAt": "2026-08-20T11:45:56.7481705+03:00",
+    "Name": "ss",
+    "Price": 2,
+    "CategoryId": 1,
+    "Quantity": 2
+  }
+}

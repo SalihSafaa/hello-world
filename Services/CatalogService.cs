@@ -1,25 +1,43 @@
-using System.Data.Common;
-
 namespace HelloWorld
 {
     public class CatalogService : ICatalogService
     {
         private static int _nextCategoryId=1;
         private static int _nextProductId=1;
+        private readonly JsonManager<Dictionary<int, Category>> _categoryManager = new("categories.json");
+        private readonly JsonManager<Dictionary<int, Product>> _productManager = new("products.json");
         //test
-            private static Dictionary<int,Category> _categories = new Dictionary<int, Category>
+            // private static Dictionary<int,Category> _categories = new Dictionary<int, Category>
+            // {
+            //     {_nextCategoryId,new Category(_nextCategoryId++, "Electronics", "Devices and gadgets")},
+            //     {_nextCategoryId,new Category(_nextCategoryId++, "Books", "Literature and educational materials")},
+            //     {_nextCategoryId,new Category(_nextCategoryId++, "Clothing", "Apparel and accessories")}
+            // };
+            // private static Dictionary<int,Product> _products = new Dictionary<int, Product>
+            // {
+            //    {_nextProductId, new Product(_nextProductId++, "Laptop", 999.99m,0, 1)},
+            //    {_nextProductId, new Product(_nextProductId++, "Smartphone", 499.99m,1, 1)},
+            //    {_nextProductId, new Product(_nextProductId++, "Novel", 19.99m,6, 2)},
+            //    {_nextProductId, new Product(_nextProductId++, "T-Shirt", 14.99m,9, 3)}
+            // };
+            private static Dictionary<int,Category> _categories = new Dictionary<int, Category>();
+            private static Dictionary<int,Product> _products = new Dictionary<int, Product>();
+            public CatalogService()
             {
-                {_nextCategoryId,new Category(_nextCategoryId++, "Electronics", "Devices and gadgets")},
-                {_nextCategoryId,new Category(_nextCategoryId++, "Books", "Literature and educational materials")},
-                {_nextCategoryId,new Category(_nextCategoryId++, "Clothing", "Apparel and accessories")}
-            };
-            private static Dictionary<int,Product> _products = new Dictionary<int, Product>
-            {
-               {_nextProductId, new Product(_nextProductId++, "Laptop", 999.99m,0, 1)},
-               {_nextProductId, new Product(_nextProductId++, "Smartphone", 499.99m,1, 1)},
-               {_nextProductId, new Product(_nextProductId++, "Novel", 19.99m,6, 2)},
-               {_nextProductId, new Product(_nextProductId++, "T-Shirt", 14.99m,9, 3)}
-            };
+                _categories = _categoryManager.load(_categories);
+                _products = _productManager.load(_products);
+                _nextCategoryId = _categories.Keys.DefaultIfEmpty(0).Max() + 1;
+                _nextProductId = _products.Keys.DefaultIfEmpty(0).Max() + 1;
+            }
+
+        private void SaveData()
+        {
+            _categoryManager.save(_categories);
+            _productManager.save(_products);
+        }
+            
+            
+
         public List<int> ExistingCategoryID()
         {
             return _categories.Values.Select(p=>p.Id).ToList();
@@ -157,6 +175,7 @@ namespace HelloWorld
             }
             Category newCategory=new Category(_nextCategoryId, name, description);
             _categories.Add(_nextCategoryId++,newCategory);
+            SaveData();
             Console.WriteLine($"Category added: {newCategory}");
             //Console.WriteLine("not implemented yet");
         }
@@ -170,6 +189,7 @@ namespace HelloWorld
             }
             Product newProduct=new Product(_nextProductId, name, price,quantity, categoryId);
             _products.Add(_nextProductId++,newProduct);
+            SaveData();
             Console.WriteLine($"Product added: {newProduct}");
             //Console.WriteLine("not implemented yet");
         }
@@ -191,6 +211,7 @@ namespace HelloWorld
             {
                 categoryToUpdate.Name=newName;
                 categoryToUpdate.Description=newDescription;
+                SaveData();
                 Console.WriteLine($"Category updated: {categoryToUpdate}");
             }
             //Console.WriteLine("not implemented yet");
@@ -231,6 +252,7 @@ namespace HelloWorld
                 productToUpdate.Price=newPrice;
                 productToUpdate.CategoryId=newCategoryId;
                 productToUpdate.Quantity=quantity;
+                SaveData();
                 Console.WriteLine($"Product updated: {productToUpdate}");
             }
             
@@ -263,6 +285,7 @@ namespace HelloWorld
                     {
                         // var categoryToDelete=_categories.Find(c=>c.Id==id);
                         _categories.Remove(id);
+                        SaveData();
                         Console.WriteLine($"Category deleted: {categoryToDelete}");
                     }
                     else if (confirmation == "n")
@@ -299,6 +322,7 @@ namespace HelloWorld
                     {
                         // var productToDelete = _products.Find(p => p.Id == id);
                         _products.Remove(id);
+                        SaveData();
                         Console.WriteLine($"Product deleted: {productToDelete}");
                     }
                     else if (confirmation == "n")

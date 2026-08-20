@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace HelloWorld
 {
     public static class UI
@@ -92,11 +94,13 @@ namespace HelloWorld
                         break;
                     case 3:
                         //List product
+                        Console.WriteLine($"{"ID",-5} | {"Product Name",-12} | {"Price",-9} | {"InStock",-9} | {"CategoryName",-12} | {"Created At",-30}");
+                        Console.WriteLine(new string('-',84));
                         catalogService.GetProducts().ToList()
                         .ForEach(p=>Console.WriteLine
-                        ($"{p.Name} {p.Price:c} ,inStock: {p.Quantity} {catalogService.
+                        ($"{p.Id,-5} | {p.Name,-12} | {p.Price,-9:C} | {p.Quantity,-9} | {catalogService.
                         GetCategoryById
-                        (p.CategoryId)?.Name}, {p.CreatedAt}"));
+                        (p.CategoryId)?.Name,-12} | {p.CreatedAt,-30}"));
                         break;
                     case 4:
                         //list by category

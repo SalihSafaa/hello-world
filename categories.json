@@ -1,0 +1,22 @@
+{
+  "1": {
+    "Id": 1,
+    "Name": "Electronics",
+    "Description": "Devices and gadgets"
+  },
+  "2": {
+    "Id": 2,
+    "Name": "Books",
+    "Description": "Literature and educational materials"
+  },
+  "3": {
+    "Id": 3,
+    "Name": "Clothing",
+    "Description": "Apparel and accessories"
+  },
+  "4": {
+    "Id": 4,
+    "Name": "Testing",
+    "Description": "general"
+  }
+}

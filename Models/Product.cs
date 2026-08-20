@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace HelloWorld
 {
     public class Product 
@@ -11,7 +13,13 @@ namespace HelloWorld
         public int CategoryId { get; set; }
         public int Quantity {get; set;}
 
-        public Product(int id, string name, decimal price,int quantity, int categoryId)
+        public Product(int id, string name, decimal price, int quantity, int categoryId)
+            : this(id, name, price, quantity, categoryId, DateTime.Now)
+        {
+        }
+
+        [JsonConstructor]
+        public Product(int id, string name, decimal price, int quantity, int categoryId, DateTime createdAt)
         {
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(categoryId);
@@ -25,7 +33,7 @@ namespace HelloWorld
             Price = price;
             CategoryId = categoryId;
             Quantity=quantity;
-            CreatedAt=DateTime.Now;
+            CreatedAt=createdAt;
         }
 
         public override string ToString()

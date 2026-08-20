@@ -13,7 +13,6 @@ C:\Users\salih.safaa\dotnet_learn\hello world\obj\Debug\net10.0\refint\hello wor
 C:\Users\salih.safaa\dotnet_learn\hello world\obj\Debug\net10.0\hello world.pdb
 C:\Users\salih.safaa\dotnet_learn\hello world\obj\Debug\net10.0\hello world.genruntimeconfig.cache
 C:\Users\salih.safaa\dotnet_learn\hello world\obj\Debug\net10.0\ref\hello world.dll
-C:\Users\salih.safaa\intern\helloworld\hello-world\bin\Debug\net10.0\hello world.exe
 C:\Users\salih.safaa\intern\helloworld\hello-world\bin\Debug\net10.0\hello world.deps.json
 C:\Users\salih.safaa\intern\helloworld\hello-world\bin\Debug\net10.0\hello world.runtimeconfig.json
 C:\Users\salih.safaa\intern\helloworld\hello-world\bin\Debug\net10.0\hello world.dll
